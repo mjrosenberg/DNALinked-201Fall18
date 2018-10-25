@@ -15,13 +15,15 @@ public class CodonProfiler {
 	public int[] getCodonProfile(IDnaStrand strand, String[] codons) {
 		HashMap<String,Integer> map = new HashMap<>();
 		int[] ret = new int[codons.length];
-				
-		for(int k=0; k < codons.length; k++) {
-			String strand1 = codons[k];
+		//right now this goes through each element in codons and checks if it is in strand by 
+		//iterating through	it until there are no more and appending it to a map
+		//because it iterates for every element in codon it is O(c*n)
+		//for(int k=0; k < codons.length; k++) {
+			//String strand1 = codons[k];
 			Iterator<Character> iter = strand.iterator();
-			if (!map.containsKey(strand1)){
-				map.put(strand1, 0);
-			}
+			//if (!map.containsKey(strand1)){
+			//	map.put(strand1, 0);
+			//}
 			while (iter.hasNext()) {
 				char a = iter.next();
 				char b = 'z';           // not part of any real codon
@@ -33,13 +35,19 @@ public class CodonProfiler {
 					c = iter.next();
 				}
 				String cod = ""+a+b+c;
-				if (cod.equals(strand1)) {
-					int x = map.get(strand1); 
+				//if (cod.equals(strand1)) {
+				if (Arrays.asList(codons).contains(cod)) {
+					int index = Arrays.asList(codons).indexOf(cod);
+					if (!map.containsKey(cod)){
+						map.put(cod, 0);
+					}
+					int x = map.get(cod); 
 					x += 1;
-					map.put(strand1, x);
+					map.put(cod, x);
+					ret[index] = map.get(cod);
 				}
-			}
-			ret[k] = map.get(strand1);
+			//}
+			//ret[index] = map.get(cod);
 		}
 		return ret;
 	}
