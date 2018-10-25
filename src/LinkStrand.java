@@ -147,22 +147,24 @@ public class LinkStrand implements IDnaStrand{
 			myIndex = 0;
 			myLocalIndex = 0;
 		}	
-		if (index < 0 || index >= mySize) { //maybe use this.size() or something
+		if (index < 0 || index >= this.size()) {//mySize) { //maybe use this.size() or something
 				throw new IndexOutOfBoundsException();
 			}
 			
-		else if(index >= 0 && index < mySize)  {
-			while (myIndex != index) {
+		else if(index >= 0 && index < this.size())  {//mySize){
+			while (myIndex != index && myCurrent != null) {
 				myLocalIndex += 1;
 				myIndex += 1;
 				if (myLocalIndex >= myCurrent.info.length()) {
+					if (myCurrent.next != null) {
 					myLocalIndex = 0;
 					//myIndex += myCurrent.info.length();
 					myCurrent = myCurrent.next;
+					}
+					else {
+						break;
+					}
 				}
-				//else {
-				//	break;
-				//	}
 				}
 				//myLocalIndex = index - myIndex;
 		}
