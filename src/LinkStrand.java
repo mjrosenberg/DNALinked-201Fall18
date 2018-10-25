@@ -139,27 +139,36 @@ public class LinkStrand implements IDnaStrand{
 			throw new IndexOutOfBoundsException();
 		}
 		*/
-			Node list = myFirst;
-			myLocalIndex = 0;
+			//Node list = myFirst;
+			//myLocalIndex = 0;
+			//myIndex = 0;
+		if (myIndex > index) {
+			myCurrent = myFirst;
 			myIndex = 0;
-			if (!(index >= 0 && index < this.size())){//mySize)) {
+			myLocalIndex = 0;
+		}	
+		if (index < 0 || index >= mySize) { //maybe use this.size() or something
 				throw new IndexOutOfBoundsException();
-			} 
-			else {
-				while (list.next != null) {
-					if (list.info.length() < index) {
-						myLocalIndex = 0;
-						myIndex += list.info.length();
-						list = list.next;
-					}
-					else {
-						break;
-					}
-				}
-				myLocalIndex = index - myIndex;
-				return list.info.charAt(myLocalIndex);
 			}
+			
+		else if(index >= 0 && index < mySize)  {
+			while (myIndex != index) {
+				myLocalIndex += 1;
+				myIndex += 1;
+				if (myLocalIndex >= myCurrent.info.length()) {
+					myLocalIndex = 0;
+					//myIndex += myCurrent.info.length();
+					myCurrent = myCurrent.next;
+				}
+				//else {
+				//	break;
+				//	}
+				}
+				//myLocalIndex = index - myIndex;
 		}
+		return myCurrent.info.charAt(myLocalIndex);
+	}
+		//}
 
 	//}
 	//This some validd ass toString
