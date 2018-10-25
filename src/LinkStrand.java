@@ -16,8 +16,9 @@ public class LinkStrand implements IDnaStrand{
 	private int myAppends;
 	private long mySize;
 	private String myInfo;
-	private int myIndex,myLocalIndex;//myCount;
-	private Node myCurrent;
+	private int myIndex = 0;
+	private int myLocalIndex = 0;//myCount;
+	private Node myCurrent = myFirst;
 	
 	public LinkStrand() {
 		this("");
