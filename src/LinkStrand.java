@@ -97,6 +97,7 @@ public class LinkStrand implements IDnaStrand{
 		Node node1 = first;
 		//if(k == 0) {
 			//dna.myFirst = ans;
+		dna.mySize += node1.toString().length();
 		node1 = node1.next;
 			//k+=1;
 		//}
