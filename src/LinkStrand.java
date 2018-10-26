@@ -117,7 +117,7 @@ public class LinkStrand implements IDnaStrand{
 			node1 = node1.next;
 		}
 		//}
-		dna.mySize = dna.size();
+		dna.mySize = this.size();
 		return dna;
 		/*
 		LinkStrand dna = new LinkStrand();
