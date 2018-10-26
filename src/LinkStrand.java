@@ -81,28 +81,28 @@ public class LinkStrand implements IDnaStrand{
 	@Override
 	public IDnaStrand reverse() {
 		// TODO Auto-generated method stub
-		/*
+		
 		Node first = myFirst;
 		StringBuilder str1 = new StringBuilder(first.info);
-		String backwards = str1.reverse().toString();
-
+		str1 = str1.reverse();
+		String backwards = str1.toString();
 		LinkStrand dna = new LinkStrand(backwards); 
-			Node node1 = myFirst.next;
-			//newStrand.myFirst.next = current; 
-
+		Node node1 = myFirst;
+		
 		while (node1.next != null) {
 			node1 = node1.next;
 			StringBuilder rev1 = new StringBuilder(node1.info);
-			backwards = rev1.reverse().toString();
-			Node newNode = new Node (backwards);
-			newNode.next = dna.myFirst;
-			dna.myFirst = newNode;
+			rev1 = rev1.reverse();
+			backwards = rev1.toString();
+			Node node2 = new Node (backwards);
+			node2.next = dna.myFirst;
+			dna.myFirst = node2;
 			//node1 = node1.next;
 			}
 			dna.mySize = mySize;
 			dna.myAppends = myAppends;
 			return dna;
-		*/
+		/*
 		Node first = myFirst;
 		StringBuilder news = new StringBuilder(first.info);
 		//int k = 0;
