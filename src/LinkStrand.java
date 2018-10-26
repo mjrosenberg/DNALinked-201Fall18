@@ -104,12 +104,11 @@ public class LinkStrand implements IDnaStrand{
 		while(node1 != null) {
 			//node1 = node1.next;
 			StringBuilder news1 = new StringBuilder(node1.info);
-			dna.mySize += news1.toString().length();
 			news1 = news1.reverse();
 			Node node2 = new Node(news1.toString());
-			
+			dna.mySize += news1.toString().length();
 			//System.out.println(dna.mySize);
-			//dna.myLast = ans;
+			dna.myLast = node1.next;
 			node2.next = dna.myFirst;
 			dna.myFirst = node2;
 			node1 = node1.next;
