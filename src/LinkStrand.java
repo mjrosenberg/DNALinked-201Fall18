@@ -132,7 +132,7 @@ public class LinkStrand implements IDnaStrand{
 			//int length = news1.toString().length();
 			
 			//System.out.println(dna.mySize);
-			dna.myLast = ans;//node1.next;
+			dna.myLast = node1.next;
 			node2.next = dna.myFirst;
 			dna.myFirst = node2;
 			//dna.mySize += length;
