@@ -112,6 +112,7 @@ public class LinkStrand implements IDnaStrand{
 		news = news.reverse();
 		String backwardsdna = news.toString();
 		Node ans = new Node(backwardsdna);
+		StringBuilder totchars = new StringBuilder(news);
 		LinkStrand dna = new LinkStrand();//ans.info);
 		dna.initialize(ans.info);
 		Node node1 = first;
@@ -124,20 +125,21 @@ public class LinkStrand implements IDnaStrand{
 		//else {
 		while(node1 != null) {
 			//node1 = node1.next;
+			totchars.append(node1.info);
 			StringBuilder news1 = new StringBuilder(node1.info);
 			news1 = news1.reverse();
 			Node node2 = new Node(news1.toString());
-			int length = news1.toString().length();
+			//int length = news1.toString().length();
 			
 			//System.out.println(dna.mySize);
-			dna.myLast = node1.next;
+			dna.myLast = ans;//node1.next;
 			node2.next = dna.myFirst;
 			dna.myFirst = node2;
-			dna.mySize += length;
+			//dna.mySize += length;
 			node1 = node1.next;
 		}
 		//}
-		//dna.mySize = mySize;
+		dna.mySize = totchars.toString().length();
 		return dna;
 		/*
 		LinkStrand dna = new LinkStrand();
