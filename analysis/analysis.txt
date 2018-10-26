@@ -1,9 +1,59 @@
-Your Name here
-Your NetID here
-Your Partner's name here (or erase)
-Your Partner's NetID here (or erase)
+Max Rosenberg
+mjr70
+Adrian Lopez
+al324
 
-Questions here will come from the assignment
-writeup. Be sure to copy paste questions and 
-your explanations before you push to GitHub and
-do that before uploading to Gradescope
+Question 1: are the benchmark timings for StringStrand consistent with the explanation below that 
+the time to execute cutAndSplice is O(b2S)? 
+
+Note that the value of b is half the number of calls to append since each cut 
+(except the first) is modeled by two calls of append in the method cutAndSplice -- 
+see the code. This means that b2 will be constant in the benchmark, but S will vary. 
+
+Class	                splicee	      recomb	time	appends
+-----
+StringStrand:	            256	      4,800,471	0.405	1290
+StringStrand:	            512	      4,965,591	0.402	1290
+StringStrand:	          1,024	      5,295,831	0.411	1290
+StringStrand:	          2,048	      5,956,311	0.466	1290
+StringStrand:	          4,096	      7,277,271	0.583	1290
+StringStrand:	          8,192	      9,919,191	0.815	1290
+StringStrand:	         16,384	     15,203,031	1.288	1290
+StringStrand:	         32,768	     25,770,711	2.274	1290
+StringStrand:	         65,536	     46,906,071	4.410	1290
+StringStrand:	        131,072	     89,176,791	9.840	1290
+StringStrand:	        262,144	    173,718,231	21.724	1290
+StringStrand:	        524,288	    342,801,111	43.260	1290
+
+Yes, it changes fairly linearly with the size of the splicee once it begins to get large. As the size 
+gets larger the number of calls to appends increases at a linear rate, so the overall runtime increases,
+even though the runtime for appends should be the same each time, so it is only dependent on S.
+
+Question 2: are the benchmark timings for StringBuilderStrand consistent with 
+the explanation below that the time to execute cutAndSplice is O(bS)? 
+
+Note that the value of b is half the number of calls to append since each 
+cut (except the first) is modeled by two calls of append in the method cutAndSplice 
+-- see the code. This means that b will be constant in the benchmark, but S will vary. 
+
+Class	                        splicee	      recomb	time	appends
+-----
+StringBuilderStrand:	            256	      4,800,471	0.026	1290
+StringBuilderStrand:	            512	      4,965,591	0.019	1290
+StringBuilderStrand:	          1,024	      5,295,831	0.007	1290
+StringBuilderStrand:	          2,048	      5,956,311	0.008	1290
+StringBuilderStrand:	          4,096	      7,277,271	0.006	1290
+StringBuilderStrand:	          8,192	      9,919,191	0.011	1290
+StringBuilderStrand:	         16,384	     15,203,031	0.009	1290
+StringBuilderStrand:	         32,768	     25,770,711	0.025	1290
+StringBuilderStrand:	         65,536	     46,906,071	0.041	1290
+StringBuilderStrand:	        131,072	     89,176,791	0.092	1290
+StringBuilderStrand:	        262,144	    173,718,231	0.251	1290
+StringBuilderStrand:	        524,288	    342,801,111	0.545	1290
+
+Except for the final two splicees, it seems like the program is running at relatively constant time 
+no matter the length. That is not consistent with them being reliant on a changing S only for runtime.
+
+Question 3: Explain why the time for LinkStrand does not change much at all over all the runs in the 
+benchmark program. Explain why you think memory is exhausted at the specific strand size 
+you see in your timings -- as compared to exhaustion for String and StringBuilder.

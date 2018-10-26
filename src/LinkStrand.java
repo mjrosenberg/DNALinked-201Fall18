@@ -97,25 +97,40 @@ public class LinkStrand implements IDnaStrand{
 		Node node1 = first;
 		//if(k == 0) {
 			//dna.myFirst = ans;
-		//node1 = node1.next;
+		node1 = node1.next;
 			//k+=1;
 		//}
 		//else {
-		while(node1.next != null) {
-			node1 = node1.next;
+		while(node1 != null) {
+			//node1 = node1.next;
 			StringBuilder news1 = new StringBuilder(node1.info);
+			dna.mySize += news1.toString().length();
 			news1 = news1.reverse();
 			Node node2 = new Node(news1.toString());
-			dna.mySize += news1.toString().length();
+			
+			//System.out.println(dna.mySize);
 			//dna.myLast = ans;
 			node2.next = dna.myFirst;
 			dna.myFirst = node2;
-			//node1 = node1.next;
+			node1 = node1.next;
 		}
 		//}
 		return dna;
-		
-		
+		/*
+		LinkStrand dna = new LinkStrand();
+		Node first = myFirst;
+		Node node1 = null;
+		while (first != null) {
+			StringBuilder s1 = new StringBuilder(first.info);
+			s1 = s1.reverse();
+			Node node2 = new Node(s1.toString());
+			node2.next = node1;
+			node1.next = node2;
+			node2 = dna.myLast;
+			first = first.next;
+		}
+		return dna;
+		*/
 	}
 
 	@Override
