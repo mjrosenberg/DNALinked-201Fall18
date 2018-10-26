@@ -83,7 +83,7 @@ public class LinkStrand implements IDnaStrand{
 		// TODO Auto-generated method stub
 		
 		
-		Node first = this.myFirst;
+		Node first = myFirst;
 		StringBuilder news = new StringBuilder(first.info);
 		//int k = 0;
 		//built in function for StringBuilder
@@ -107,7 +107,8 @@ public class LinkStrand implements IDnaStrand{
 			StringBuilder news1 = new StringBuilder(node1.info);
 			news1 = news1.reverse();
 			Node node2 = new Node(news1.toString());
-			dna.mySize += news1.toString().length();
+			int length = news1.toString().length();
+			dna.mySize += length;
 			//System.out.println(dna.mySize);
 			dna.myLast = node1.next;
 			node2.next = dna.myFirst;
