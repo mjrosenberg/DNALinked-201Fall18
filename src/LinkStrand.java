@@ -30,8 +30,8 @@ public class LinkStrand implements IDnaStrand{
 	@Override
 	public long size() {
 		// TODO Auto-generated method stub
-		
-		return myInfo.length();
+		return mySize;
+		//return myInfo.length();
 	}
 	//Potentially StringBuilder.
 	//Work on this later.
@@ -68,8 +68,8 @@ public class LinkStrand implements IDnaStrand{
 		myLast.next = node1 ;
 		myLast = myLast.next;
 		myInfo += dna;
-		//mySize += dna.length();
-		mySize = this.size();
+		mySize += dna.length();
+		//mySize = this.size();
 		//Adds one to the value for myAppends every
 		//time it is call
 		myAppends += 1;
@@ -105,7 +105,6 @@ public class LinkStrand implements IDnaStrand{
 		*/
 		Node first = myFirst;
 		StringBuilder news = new StringBuilder(first.info);
-		//int k = 0;
 		//built in function for StringBuilder
 		//ask not what an object can do you for you
 		//but what an object can do for itself -JFK
@@ -116,13 +115,9 @@ public class LinkStrand implements IDnaStrand{
 		LinkStrand dna = new LinkStrand();//ans.info);
 		dna.initialize(ans.info);
 		Node node1 = first;
-		//if(k == 0) {
-			//dna.myFirst = ans;
-		//dna.mySize += node1.toString().length();
+		
 		node1 = node1.next;
-			//k+=1;
-		//}
-		//else {
+			
 		while(node1 != null) {
 			//node1 = node1.next;
 			totchars.append(node1.info);
