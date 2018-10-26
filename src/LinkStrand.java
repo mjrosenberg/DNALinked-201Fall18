@@ -81,8 +81,28 @@ public class LinkStrand implements IDnaStrand{
 	@Override
 	public IDnaStrand reverse() {
 		// TODO Auto-generated method stub
-		
-		
+		/*
+		Node first = myFirst;
+		StringBuilder str1 = new StringBuilder(first.info);
+		String backwards = str1.reverse().toString();
+
+		LinkStrand dna = new LinkStrand(backwards); 
+			Node node1 = myFirst.next;
+			//newStrand.myFirst.next = current; 
+
+		while (node1.next != null) {
+			node1 = node1.next;
+			StringBuilder rev1 = new StringBuilder(node1.info);
+			backwards = rev1.reverse().toString();
+			Node newNode = new Node (backwards);
+			newNode.next = dna.myFirst;
+			dna.myFirst = newNode;
+			//node1 = node1.next;
+			}
+			dna.mySize = mySize;
+			dna.myAppends = myAppends;
+			return dna;
+		*/
 		Node first = myFirst;
 		StringBuilder news = new StringBuilder(first.info);
 		//int k = 0;
@@ -107,17 +127,17 @@ public class LinkStrand implements IDnaStrand{
 			StringBuilder news1 = new StringBuilder(node1.info);
 			news1 = news1.reverse();
 			Node node2 = new Node(news1.toString());
-			int length = news1.toString().length();
+			//int length = news1.toString().length();
 			
 			//System.out.println(dna.mySize);
 			dna.myLast = node1.next;
 			node2.next = dna.myFirst;
 			dna.myFirst = node2;
-			dna.mySize += length;
+			//dna.mySize += length;
 			node1 = node1.next;
 		}
 		//}
-		dna.mySize = this.size();
+		//dna.mySize = mySize;
 		return dna;
 		/*
 		LinkStrand dna = new LinkStrand();
@@ -134,6 +154,7 @@ public class LinkStrand implements IDnaStrand{
 		}
 		return dna;
 		*/
+		
 	}
 
 	@Override
