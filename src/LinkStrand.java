@@ -106,7 +106,7 @@ public class LinkStrand implements IDnaStrand{
 			StringBuilder news1 = new StringBuilder(node1.info);
 			news1 = news1.reverse();
 			Node node2 = new Node(news1.toString());
-			dna.mySize += news1.toString().length();
+			dna.mySize += node2.info.length();//.toString().length();
 			//dna.myLast = ans;
 			node2.next = dna.myFirst;
 			dna.myFirst = node2;
