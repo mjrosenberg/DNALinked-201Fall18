@@ -87,17 +87,17 @@ public class LinkStrand implements IDnaStrand{
 		str1 = str1.reverse();
 		String backwards = str1.toString();
 		LinkStrand dna = new LinkStrand(backwards); 
-		Node node1 = myFirst;
+		Node node1 = myFirst.next;
 		
-		while (node1.next != null) {
-			node1 = node1.next;
+		while (node1 != null) {
+			//node1 = node1.next;
 			StringBuilder rev1 = new StringBuilder(node1.info);
 			rev1 = rev1.reverse();
 			backwards = rev1.toString();
 			Node node2 = new Node (backwards);
 			node2.next = dna.myFirst;
 			dna.myFirst = node2;
-			//node1 = node1.next;
+			node1 = node1.next;
 			}
 			dna.mySize = mySize;
 			dna.myAppends = myAppends;
