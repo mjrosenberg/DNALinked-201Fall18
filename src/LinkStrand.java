@@ -81,6 +81,7 @@ public class LinkStrand implements IDnaStrand{
 	@Override
 	public IDnaStrand reverse() {
 		// TODO Auto-generated method stub
+		
 		LinkStrand dna = new LinkStrand();
 		Node first = myFirst;
 		StringBuilder news = new StringBuilder(first.info);
@@ -93,18 +94,22 @@ public class LinkStrand implements IDnaStrand{
 		Node ans = new Node(backwardsdna);
 		dna.initialize(ans.info);
 		Node node1 = first;
-		while(node1.next != null) {
-			node1 = node1.next;
+		dna.myLast = ans;
+		node1 = node1.next;
+		while(node1 != null) {
+			//node1 = node1.next;
 			StringBuilder news1 = new StringBuilder(node1.info);
 			news1 = news1.reverse();
 			Node node2 = new Node(news1.toString());
 			dna.mySize += news1.toString().length();
 			dna.myLast = node1;
-			node2.next = dna.myFirst;
+			//node2 = dna.myFirst;
 			dna.myFirst = node2;
-			//node1 = node1.next;
+			node1 = node1.next;
 		}
 		return dna;
+		
+		
 	}
 
 	@Override
@@ -115,52 +120,22 @@ public class LinkStrand implements IDnaStrand{
 
 	@Override
 	public char charAt(int index) {
-		/*
-		Node list = myFirst;
-		myCount = 0;
-		myIndex = 0;
-		//maybe less than
-		if(index>=0 && index<mySize) {
-			if (myCount > index) {
-				myCount = 0;
-				list = myFirst;
-				myIndex = 0;
-			}
-			while (myCount != index) {
-				myCount++;
-				myIndex++;
-				if (myIndex >= list.info.length()) {
-					myIndex = 0;
-					list = list.next;
-				}
-			}
-	           return list.info.charAt(myIndex);
-	        
-		}
-		else {
-			throw new IndexOutOfBoundsException();
-		}
-		*/
-			//Node list = myFirst;
-			//myLocalIndex = 0;
-			//myIndex = 0;
 		if (myIndex > index) {
 			myCurrent = myFirst;
 			myIndex = 0;
 			myLocalIndex = 0;
 		}	
-		if (index < 0 || index >= this.size()) {//mySize) { //maybe use this.size() or something
+		if (index < 0 || index >= this.size()) {
 				throw new IndexOutOfBoundsException();
 			}
 			
-		else if(index >= 0 && index < this.size())  {//mySize){
+		else if(index >= 0 && index < this.size())  {
 			while (myIndex != index && myCurrent != null) {
 				myLocalIndex += 1;
 				myIndex += 1;
 				if (myLocalIndex >= myCurrent.info.length()) {
 					if (myCurrent.next != null) {
 					myLocalIndex = 0;
-					//myIndex += myCurrent.info.length();
 					myCurrent = myCurrent.next;
 					}
 					else {
@@ -168,13 +143,10 @@ public class LinkStrand implements IDnaStrand{
 					}
 				}
 				}
-				//myLocalIndex = index - myIndex;
 		}
 		return myCurrent.info.charAt(myLocalIndex);
 	}
-		//}
-
-	//}
+		
 	//This some validd ass toString
 	//Might have some error
 	public String toString() {
