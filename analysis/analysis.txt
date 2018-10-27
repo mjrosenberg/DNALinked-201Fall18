@@ -57,3 +57,7 @@ no matter the length. That is not consistent with them being reliant on a changi
 Question 3: Explain why the time for LinkStrand does not change much at all over all the runs in the 
 benchmark program. Explain why you think memory is exhausted at the specific strand size 
 you see in your timings -- as compared to exhaustion for String and StringBuilder.
+
+Using linked lists allow for faster access to each element within the dna, so it will have a similar 
+runtime no matter what is being searched for. It takes up more memory per run it seems since it needs
+to store each node of the linked list, whereas the string builder and string will take up less memory.
